@@ -1,0 +1,42 @@
+﻿<Page
+    x:Class="WinUI3Examples.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="using:WinUI3Examples.Converters">
+
+    <Page.Resources>
+        <converters:ThemeToIsCheckedConverter x:Key="CheckedConverter"/>
+    </Page.Resources>
+
+    <Grid>
+        <ScrollViewer>
+            <StackPanel
+                Padding="56, 0, 0, 0">
+                <TextBlock 
+                    Style="{StaticResource SubtitleTextBlockStyle}"
+                    Margin="0, 12, 0, 0"
+                    Text="Theme Mode"/>
+                
+                <StackPanel Name="themePanel" Margin="0, 10, 0, 0">
+                    <RadioButton Content="Light" 
+                                 Tag="Light"
+                                 IsChecked="{x:Bind viewModel.CurrentTheme, Converter={StaticResource CheckedConverter}, ConverterParameter=Light}"
+                                 Command="{x:Bind viewModel.ThemeSelectedCommand}" CommandParameter="Light"/>
+                    <RadioButton Content="Dark"
+                                 Tag="Dark"
+                                 IsChecked="{x:Bind viewModel.CurrentTheme, Converter={StaticResource CheckedConverter}, ConverterParameter=Dark}"
+                                 Command="{x:Bind viewModel.ThemeSelectedCommand}" CommandParameter="Dark"/>
+                    <RadioButton Content="Default"
+                                 Tag="Default"
+                                 IsChecked="{x:Bind viewModel.CurrentTheme, Converter={StaticResource CheckedConverter}, ConverterParameter=Default}"
+                                 Command="{x:Bind viewModel.ThemeSelectedCommand}" CommandParameter="Default"/>
+                </StackPanel>
+
+                <TextBlock Margin="0, 30, 0, 0">
+                    App Version: 
+                    <Run Text="{x:Bind viewModel.AppVersion}"/>
+                </TextBlock>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>

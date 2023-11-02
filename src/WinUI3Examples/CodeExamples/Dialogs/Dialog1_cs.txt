@@ -1,0 +1,23 @@
+﻿private async Task ShowDialog()
+{
+    OutputText = "Wailing for result";
+
+    var dialog = new ContentDialog
+    {
+        Title = "My little dialog",
+        Content = "Do you like my little dialog window?",
+        CloseButtonText = "No",
+        PrimaryButtonText = "Yes"
+    };
+
+    dialog.XamlRoot = App.Current.MainRoot;
+    var result = await dialog.ShowAsync();
+
+    OutputText = result switch
+    {
+        ContentDialogResult.None => "You selected No",
+        ContentDialogResult.Primary => "You selected Yes",
+        ContentDialogResult.Secondary => "Not sure how this got selected",
+        _ => "Hmm...not sure what happened",
+    };
+}

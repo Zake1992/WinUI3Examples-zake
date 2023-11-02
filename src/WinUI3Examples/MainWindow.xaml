@@ -1,0 +1,109 @@
+﻿<Window
+    x:Class="WinUI3Examples.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUI3Examples"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Activated="OnWindowActivated">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- Application title bar-->
+        <Grid x:Name="appTitleBar"
+              Background="Red">
+            <TextBlock x:Name="appTitle"
+                       Text="My WinUI 3 Examples"
+                       Style="{StaticResource CaptionTextBlockStyle}"
+                       Margin="8 8 0 0"/>
+
+        </Grid>
+
+        <!-- Navigation view -->
+        <NavigationView
+            Grid.Row="1"
+            x:Name="navigationView"
+            Header="Oh-oh!, something should be here!"
+            IsTitleBarAutoPaddingEnabled="True"
+            SelectionChanged="OnNavigationSelectionChanged">
+
+            <NavigationView.MenuItems>
+
+                <!-- Welcome -->
+                <NavigationViewItem
+                    Content="Welcome"
+                    Tag="WinUI3Examples.Pages.WelcomePage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE76E;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <!-- Dialogs -->
+                <NavigationViewItem 
+                    Content="Dialogs"
+                    Tag="WinUI3Examples.Pages.Dialogs.DialogsPage"
+                    Icon="Message">
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem
+                            Content="Save"
+                            Tag="WinUI3Examples.Pages.Dialogs.SaveDialogPage"
+                            Icon="Save">
+                        </NavigationViewItem>
+                        <NavigationViewItem
+                            Content="Content Dialog"
+                            Tag="WinUI3Examples.Pages.Dialogs.ContentDialogPage"
+                            Icon="Page">
+                        </NavigationViewItem>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+
+                <!-- Navigation -->
+                <NavigationViewItem
+                    Content="Navigation"
+                    Tag="WinUI3Examples.Pages.Navigation.NavigationPage">
+                    <NavigationViewItem.Icon>
+                        <BitmapIcon UriSource="/Assets/compass.png"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <!-- Windows -->
+                <NavigationViewItem 
+                    Content="Windows"
+                    Icon="NewWindow"
+                    Tag="WinUI3Examples.Pages.Windows.WindowsPage">
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem
+                            Content="Title Bars"
+                            Tag="WinUI3Examples.Pages.Windows.TitleBarPage"
+                            Icon="NewWindow"/>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+
+                <!-- Test -->
+                <NavigationViewItem
+                    Content="Test"
+                    Tag="WinUI3Examples.Pages.TestPages.TestPage1"/>
+
+            </NavigationView.MenuItems>
+
+            <!-- Main area of application -->
+            <Frame x:Name="rootFrame"/>
+
+            <!--在导航菜单底部增加元素-->
+            <NavigationView.PaneFooter>
+                <Button Content="Logout" Click="OnLogoutButtonClicked" />
+            </NavigationView.PaneFooter>
+
+            <!--搜索和筛选导航项的自动建议框-->
+            <NavigationView.AutoSuggestBox>
+                <AutoSuggestBox PlaceholderText="Search..." QuerySubmitted="OnSearchQuerySubmitted" />
+            </NavigationView.AutoSuggestBox>
+
+        </NavigationView>
+    </Grid>
+</Window>

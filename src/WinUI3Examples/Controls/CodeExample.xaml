@@ -1,0 +1,42 @@
+﻿<UserControl
+    x:Class="WinUI3Examples.Controls.CodeExample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WinUI3Examples.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    ActualThemeChanged="OnActualThemeChanged"
+    Loaded="OnCodeExampleLoaded">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="ExampleProgrammingLanguageState">
+                <VisualState x:Name="XamlExample">
+                    <VisualState.Setters>
+                        <Setter Target="ExampleHeader.Text" Value="XAML"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="CSharpExample">
+                    <VisualState.Setters>
+                        <Setter Target="ExampleHeader.Text" Value="C#"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <TextBlock x:Name="ExampleHeader"/>
+
+        <ScrollViewer
+            x:Name="CodeScrollViewer" Padding="0, 4, 32, 10"
+            Grid.Row="1">
+
+            <ContentPresenter x:Name="CodePresenter" Loaded="OnCodePresenterLoaded"/>
+        </ScrollViewer>
+    </Grid>
+</UserControl>

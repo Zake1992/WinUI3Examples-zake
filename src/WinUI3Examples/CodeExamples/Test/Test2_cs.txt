@@ -1,0 +1,5 @@
+﻿public void Example2()
+{
+	var t = "This is example 2";
+	Console.WriteLine(t);
+}
