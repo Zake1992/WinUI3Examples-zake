@@ -95,4 +95,14 @@ public sealed partial class MainWindow : Window, INavigationService
 
 
     }
+
+    private void OnLogoutButtonClicked(object sender, RoutedEventArgs e)
+    {
+
+    }
+
+    private void OnSearchQuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+    {
+
+    }
 }
